@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shivan.GraphQL.Connector", "Shivan.GraphQL.Connector\Shivan.GraphQL.Connector.csproj", "{7C6332A8-B7EC-4F76-B3A7-CF3F54636854}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shivan.GraphQL.Connector.Test", "Shivan.GraphQL.Connector.Test\Shivan.GraphQL.Connector.Test.csproj", "{9B1BD18C-1572-4B4D-80FD-878BB9E4A49F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C6332A8-B7EC-4F76-B3A7-CF3F54636854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C6332A8-B7EC-4F76-B3A7-CF3F54636854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C6332A8-B7EC-4F76-B3A7-CF3F54636854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C6332A8-B7EC-4F76-B3A7-CF3F54636854}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B1BD18C-1572-4B4D-80FD-878BB9E4A49F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B1BD18C-1572-4B4D-80FD-878BB9E4A49F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B1BD18C-1572-4B4D-80FD-878BB9E4A49F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B1BD18C-1572-4B4D-80FD-878BB9E4A49F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51347F54-CBD3-4796-B300-6E3A728CB0AA}
+	EndGlobalSection
+EndGlobal
