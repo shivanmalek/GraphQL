@@ -15,7 +15,7 @@ namespace Shivan.GraphQL.Connector.Services
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<Root> GetGithubUser(string base_url , string token , string query)
+        public async Task<Root> GetNextBasicInfo(string base_url , string token , string query)
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer" , token);

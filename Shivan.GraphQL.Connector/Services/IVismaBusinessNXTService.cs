@@ -9,6 +9,6 @@ namespace Shivan.GraphQL.Connector.Services
 {
     public interface IVismaBusinessNXTService
     {
-        Task<Root> GetGithubUser(string base_url, string token, string query);
+        Task<Root> GetNextBasicInfo(string base_url, string token, string query);
     }
 }
