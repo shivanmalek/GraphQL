@@ -6,7 +6,8 @@ namespace Shivan.GraphQL.Connector.Test
 {
     public class Test : IClassFixture<DependencyFixture>
     {
-
+        public string base_url = "https://business.visma.net/api/graphql-service";
+        public string access_token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNCODAwQzc3NTNCNUZDMUMwNTVDOTU1RDkzQ0IxODJEMUJCN0IyQUFSUzI1NiIsIng1dCI6Ik80QU1kMU8xX0J3RlhKVmRrOHNZTFJ1M3NxbyIsInR5cCI6ImF0K0pXVCJ9.eyJpc3MiOiJodHRwczovL2Nvbm5lY3QudmlzbWEuY29tIiwibmJmIjoxNjc4MTE3MjYyLCJpYXQiOjE2NzgxMTcyNjIsImV4cCI6MTY3ODEyMDg2MiwiYXVkIjoiaHR0cHM6Ly9idXNpbmVzcy52aXNtYS5uZXQvYXBpL2dyYXBocWwtc2VydmljZSIsInNjb3BlIjpbImJ1c2luZXNzLWdyYXBocWwtc2VydmljZS1hcGk6YWNjZXNzLWdyb3VwLWJhc2VkIl0sImNsaWVudF9pZCI6Imlzdl9zaGl2YW4ifQ.E7J-8JMsJNUSDjUteodlKRbsX0LBWLeUV_MbI3bUmI7OmvxCNlMUbFxUMStWw4RSilfdGwSv-wkIWk2FUMHCknAXu6NI2VGjB-E0i9H7PhSjuZVQSPQYZScaUJYxgyljfo_5a7fgqjvmwZIRRn5vLp5aIJyY07O3-arRNHN7WM5S41zqnaCp7XkVDnB9by2QLk116HDeFFdwoMgEKAbJ5x8YbSeakTKXi9PiUd9jxRjgQWFkmNo5t7mdzCaUjSI6RrgBL3tZTAC3UWkQtAS9N17De6CFV4v4L2dgkkJ0-Dbfy7BebBe13ZQ4_suCA4jTi29z84J61uQf24vIH8ni-g";
         private DependencyFixture _fixture;
 
         public Test(DependencyFixture fixture, ITestOutputHelper outputHelper)
@@ -17,8 +18,7 @@ namespace Shivan.GraphQL.Connector.Test
         [Fact]
         public async void GetData ()
         {
-            string base_url = "https://business.visma.net/api/graphql-service";
-            string access_token      = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNCODAwQzc3NTNCNUZDMUMwNTVDOTU1RDkzQ0IxODJEMUJCN0IyQUFSUzI1NiIsIng1dCI6Ik80QU1kMU8xX0J3RlhKVmRrOHNZTFJ1M3NxbyIsInR5cCI6ImF0K0pXVCJ9.eyJpc3MiOiJodHRwczovL2Nvbm5lY3QudmlzbWEuY29tIiwibmJmIjoxNjc3NzU0NjMwLCJpYXQiOjE2Nzc3NTQ2MzAsImV4cCI6MTY3Nzc1ODIzMCwiYXVkIjoiaHR0cHM6Ly9idXNpbmVzcy52aXNtYS5uZXQvYXBpL2dyYXBocWwtc2VydmljZSIsInNjb3BlIjpbImJ1c2luZXNzLWdyYXBocWwtc2VydmljZS1hcGk6YWNjZXNzLWdyb3VwLWJhc2VkIl0sImNsaWVudF9pZCI6Imlzdl9zaGl2YW4ifQ.fQIQmNOZiUmJuyrrgLOwXfHOXKB0LQ4pShC4eUrlgMYeLVAKpP7y_m69_UN-Y1EXqjJWdG2ynbhZLrB0eJwmR3Op7du9E--3ilKDRGhmsbnx5Bs_0gXHTnCYbCt6n4fVv5e-FxXWQlQhPSa6BWvc_kB6r8PT0EGTHrA8eB3MztpxlHBkCCv8oEULh5Z5fKdZeoXuX737M0Ka_T4yFrOws9cHqdgxef4svalBFs7k9GVPpFoA23toymKoI_PrIzJN1rlKpXsbskEtbbEA1b-5Y-ZubjqSJwXovpjFzUB1zhyYCjxbzxzrmDQJkP0FdI1eIIJ2-1kAsKzym8JLK9z7kQ";
+           
             var query = @"
             {
             availableCustomers {
@@ -49,15 +49,14 @@ namespace Shivan.GraphQL.Connector.Test
         [Fact]
         public async void PostData()
         {
-            string base_url = "https://business.visma.net/api/graphql-service";
-            string access_token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNCODAwQzc3NTNCNUZDMUMwNTVDOTU1RDkzQ0IxODJEMUJCN0IyQUFSUzI1NiIsIng1dCI6Ik80QU1kMU8xX0J3RlhKVmRrOHNZTFJ1M3NxbyIsInR5cCI6ImF0K0pXVCJ9.eyJpc3MiOiJodHRwczovL2Nvbm5lY3QudmlzbWEuY29tIiwibmJmIjoxNjc4MTA2MDU4LCJpYXQiOjE2NzgxMDYwNTgsImV4cCI6MTY3ODEwOTY1OCwiYXVkIjoiaHR0cHM6Ly9idXNpbmVzcy52aXNtYS5uZXQvYXBpL2dyYXBocWwtc2VydmljZSIsInNjb3BlIjpbImJ1c2luZXNzLWdyYXBocWwtc2VydmljZS1hcGk6YWNjZXNzLWdyb3VwLWJhc2VkIl0sImNsaWVudF9pZCI6Imlzdl9zaGl2YW4ifQ.W6F4oHc_4SeqUC2nikp9WCerbY2xNuCi6YQmohZbBERkZnrBpLTbcsLrwjk0F0jYmh6QIfbFJWzhXCZxHu7P_lWF-INvbK7BjlmAqxeOtepA9SngqxEIJcaFUNm7r6hoMYLeo8XbXbGifRv9k5XApuoGljsvTqhdvv3hepXfnjo6Ly0hIi2FfKDX4x0lbU9-1cHPi9hn_eDtdqtPDZJe77t8T66jq5-_o0f4_Hy55WneyrqxCX5KqHu7zwaQs2soi6Bj3MGnZL1j5y6vXiCcfP9KgFxgQVqW2IYZDy5mo9WJcj-bAchhVWFqiQ5QaFfMARMcfsahuD7xwNlo-vkN9w";
+            //Variables = new { companyId = 3542718, assId = 1021, name = "Shivan Malek" }
 
             var query = @"
             mutation update
             {
-            useCompany(no:$companyId) 
+            useCompany(no:3542718) 
             {
-            associate_update(  filter: {associateNo: {_eq: $assId}}  value: {name: $name})
+            associate_update(  filter: {associateNo: {_eq: 1021}}  value: {name: 'Shivan Malek'})
             { 
                     affectedRows
                         items {
@@ -66,8 +65,6 @@ namespace Shivan.GraphQL.Connector.Test
             }
             }
             }";
-
-
 
             var service = _fixture.ServiceProvider?.GetRequiredService<IVismaBusinessNXTService>();
             var result = await service.PostVBNxt(base_url, access_token, query);
