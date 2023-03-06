@@ -3,10 +3,6 @@ using System.Net.Http.Json;
 using Shivan.GraphQL.Connector.Models;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
-using GraphQL.Client.Http;
-using GraphQL.Client.Serializer.Newtonsoft;
-using GraphQL;
-using System.ComponentModel.Design;
 
 namespace Shivan.GraphQL.Connector.Services
 {
@@ -48,32 +44,7 @@ namespace Shivan.GraphQL.Connector.Services
 
 
         public async Task<Models.Association.AssociateObject> PostVBNxt(string base_url, string token, string query)
-        {
-            //var _client = _httpClientFactory.CreateClient("vismanetservice");
-            //_client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-            //_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-
-            //var client = new GraphQLHttpClient(new GraphQLHttpClientOptions
-            //{
-            //   EndPoint = new Uri(base_url),
-            //   HttpMessageHandler = new HttpClientHandler
-            //   {
-            //       AutomaticDecompression = System.Net.DecompressionMethods.Deflate| System.Net.DecompressionMethods.GZip
-            //   }
-            //} ,new NewtonsoftJsonSerializer(), _client);
-
-            //var request = new GraphQLRequest
-            //{
-            //    Query = query
-            //};
-
-            //var cancellationToken = new CancellationToken();
-
-            //var response = await client.SendMutationAsync<Models.Association.AssociateObject>(request , cancellationToken);
-
-            //return default!;
-
+        {             
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -96,6 +67,7 @@ namespace Shivan.GraphQL.Connector.Services
             {
                 return default!;
             }
+
 
         }
 
