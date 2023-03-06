@@ -39,10 +39,38 @@ namespace Shivan.GraphQL.Connector.Test
 
 
             var service = _fixture.ServiceProvider?.GetRequiredService<IVismaBusinessNXTService>();
-            var result = await service.GetGithubUser(base_url,access_token,query);
+            var result = await service.GetNextBasicInfo(base_url,access_token,query);
 
             
             //Assert.NotEqual(result.access_token,string.Empty);
+        }
+
+
+        [Fact]
+        public async void PostData()
+        {
+            string base_url = "https://business.visma.net/api/graphql-service";
+            string access_token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNCODAwQzc3NTNCNUZDMUMwNTVDOTU1RDkzQ0IxODJEMUJCN0IyQUFSUzI1NiIsIng1dCI6Ik80QU1kMU8xX0J3RlhKVmRrOHNZTFJ1M3NxbyIsInR5cCI6ImF0K0pXVCJ9.eyJpc3MiOiJodHRwczovL2Nvbm5lY3QudmlzbWEuY29tIiwibmJmIjoxNjc4MTA2MDU4LCJpYXQiOjE2NzgxMDYwNTgsImV4cCI6MTY3ODEwOTY1OCwiYXVkIjoiaHR0cHM6Ly9idXNpbmVzcy52aXNtYS5uZXQvYXBpL2dyYXBocWwtc2VydmljZSIsInNjb3BlIjpbImJ1c2luZXNzLWdyYXBocWwtc2VydmljZS1hcGk6YWNjZXNzLWdyb3VwLWJhc2VkIl0sImNsaWVudF9pZCI6Imlzdl9zaGl2YW4ifQ.W6F4oHc_4SeqUC2nikp9WCerbY2xNuCi6YQmohZbBERkZnrBpLTbcsLrwjk0F0jYmh6QIfbFJWzhXCZxHu7P_lWF-INvbK7BjlmAqxeOtepA9SngqxEIJcaFUNm7r6hoMYLeo8XbXbGifRv9k5XApuoGljsvTqhdvv3hepXfnjo6Ly0hIi2FfKDX4x0lbU9-1cHPi9hn_eDtdqtPDZJe77t8T66jq5-_o0f4_Hy55WneyrqxCX5KqHu7zwaQs2soi6Bj3MGnZL1j5y6vXiCcfP9KgFxgQVqW2IYZDy5mo9WJcj-bAchhVWFqiQ5QaFfMARMcfsahuD7xwNlo-vkN9w";
+
+            var query = @"
+            mutation update
+            {
+            useCompany(no:$companyId) 
+            {
+            associate_update(  filter: {associateNo: {_eq: $assId}}  value: {name: $name})
+            { 
+                    affectedRows
+                        items {
+                            name           
+                    }
+            }
+            }
+            }";
+
+
+
+            var service = _fixture.ServiceProvider?.GetRequiredService<IVismaBusinessNXTService>();
+            var result = await service.PostVBNxt(base_url, access_token, query);
         }
     }
 }

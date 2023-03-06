@@ -3,6 +3,10 @@ using System.Net.Http.Json;
 using Shivan.GraphQL.Connector.Models;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using static Shivan.GraphQL.Connector.Models.Association;
+using GraphQL.Client.Http;
+using GraphQL.Client.Serializer.Newtonsoft;
+using GraphQL;
 
 namespace Shivan.GraphQL.Connector.Services
 {
@@ -40,6 +44,38 @@ namespace Shivan.GraphQL.Connector.Services
                 return default!;
             }
            
+        }
+
+
+        public async Task<AssociateObject> PostVBNxt(string base_url, string token, string query)
+        {
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+
+            var client = new GraphQLHttpClient(new GraphQLHttpClientOptions
+            {
+               EndPoint = new Uri(base_url),
+               HttpMessageHandler = new HttpClientHandler
+               {
+                   AutomaticDecompression = System.Net.DecompressionMethods.Deflate| System.Net.DecompressionMethods.GZip
+               }
+            } ,new NewtonsoftJsonSerializer(), httpClient);
+
+            var request = new GraphQLRequest
+            {
+                Query = query,
+                Variables = new { companyId = 3542718, assId = 1021, name = "Shivan Malek" }
+            };
+
+            var cancellationToken = new CancellationToken();
+
+            var response = await client.SendMutationAsync<AssociateObject>(request , cancellationToken);
+
+
+            return default!;
+
         }
 
     }
